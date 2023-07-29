@@ -31,19 +31,27 @@ export const StyledMain = styled.main`
       color: #0d3009;
       border: none;
       border-radius: 0.8rem;
+      color: white;
       font-size: 2rem;
       cursor: pointer;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
     }
     &__delete {
       margin-top: 3rem;
       padding: 1rem 3rem;
       background-color: maroon;
-      color: black;
+      color: white;
       border: none;
       border-radius: 0.8rem;
       font-size: 2rem;
       cursor: pointer;
+    }
+    &__text-no-gifts {
+      font-size: 1.5rem;
+      color: white;
+    }
+    &__container-gifts {
+      margin-top: 0.5rem;
     }
   }
 `;

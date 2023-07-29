@@ -41,25 +41,27 @@ function App() {
         <button onClick={showForm} className="main__add-button">
           Agregar tu regalo
         </button>
-        <h2>Lista de regalos:</h2>
+
         {showMore && (
           <Modal setGifts={setGifts} gifts={gifts} showForm={showForm} />
         )}
         <ul>
-          {gifts.length > 0 ? (
-            gifts.map((gift) => (
-              <GiftComponent
-                deleteGift={deleteGift}
-                gift={gift}
-                key={gift.nombre}
-              />
-            ))
-          ) : (
-            <p>No hay regalos! Agrega uno</p>
-          )}
+          <div className="main__container-gifts">
+            {gifts.length > 0 ? (
+              gifts.map((gift) => (
+                <GiftComponent
+                  deleteGift={deleteGift}
+                  gift={gift}
+                  key={gift.nombre}
+                />
+              ))
+            ) : (
+              <p className="main__text-no-gifts">No hay regalos! Agrega uno</p>
+            )}
+          </div>
         </ul>
         <button className="main__delete" onClick={deleteAll}>
-          Borrar todo
+          Borrar todo!
         </button>
       </div>
     </StyledMain>
