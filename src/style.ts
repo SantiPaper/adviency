@@ -14,7 +14,7 @@ export const StyledMain = styled.main`
       padding: 4rem 12rem;
     }
     &__title {
-      font-size: 4rem;
+      font-size: 6rem;
       margin-bottom: 2rem;
       font-family: "Poppins", sans-serif;
     }
@@ -24,6 +24,26 @@ export const StyledMain = styled.main`
     }
     &__gift:not(:last-child) {
       margin-bottom: 1rem;
+    }
+    &__add-button {
+      padding: 1rem 3rem;
+      background-color: #48a53c;
+      color: #0d3009;
+      border: none;
+      border-radius: 0.8rem;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-bottom: 4rem;
+    }
+    &__delete {
+      margin-top: 3rem;
+      padding: 1rem 3rem;
+      background-color: maroon;
+      color: black;
+      border: none;
+      border-radius: 0.8rem;
+      font-size: 2rem;
+      cursor: pointer;
     }
   }
 `;

@@ -1,39 +1,66 @@
 import { StyledMain } from "./style";
-import { FormEvent, useState } from "react";
+import { useEffect, useState } from "react";
+import { Modal } from "./components/Modal";
+import { Gift as GiftComponent } from "./components/Gift";
+
+export type Gift = {
+  nombre: string;
+  cantidad: number;
+  imagen: string;
+  destinatario: string;
+};
 
 function App() {
-  const [gifts, setGifts] = useState(["Peluche", "Tablet", "Play 5"]);
+  const [gifts, setGifts] = useState<Gift[]>(() =>
+    JSON.parse(localStorage.getItem("gift") || "[]")
+  );
+  const [showMore, setShowMore] = useState(false);
 
-  const addGift = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const gift = formData.get("gift") as string;
-    setGifts([...gifts, gift]);
-    form.reset();
+  const showForm = () => {
+    if (showMore) setShowMore(false);
+    else setShowMore(true);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("gift", JSON.stringify(gifts));
+  }, [gifts]);
+
+  const deleteGift = (name: string) => {
+    const giftsFilter = gifts.filter((gift) => gift.nombre !== name);
+    setGifts(giftsFilter);
+  };
+
+  const deleteAll = () => {
+    setGifts([]);
   };
 
   return (
     <StyledMain>
       <div className="main__card">
         <h1 className="main__title">Adviency</h1>
-        <form onSubmit={addGift}>
-          <label htmlFor="gift">Agrega tu regalo!</label>
-          <input
-            placeholder="Pelota de futbol"
-            name="gift"
-            type="text"
-            id="gift"
-          />
-          <button>Agregar</button>
-        </form>
+        <button onClick={showForm} className="main__add-button">
+          Agregar tu regalo
+        </button>
+        <h2>Lista de regalos:</h2>
+        {showMore && (
+          <Modal setGifts={setGifts} gifts={gifts} showForm={showForm} />
+        )}
         <ul>
-          {gifts.map((gift) => (
-            <li key={gift} className="main__gift">
-              {gift}
-            </li>
-          ))}
+          {gifts.length > 0 ? (
+            gifts.map((gift) => (
+              <GiftComponent
+                deleteGift={deleteGift}
+                gift={gift}
+                key={gift.nombre}
+              />
+            ))
+          ) : (
+            <p>No hay regalos! Agrega uno</p>
+          )}
         </ul>
+        <button className="main__delete" onClick={deleteAll}>
+          Borrar todo
+        </button>
       </div>
     </StyledMain>
   );
