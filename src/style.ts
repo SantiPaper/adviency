@@ -48,7 +48,7 @@ export const StyledMain = styled.main`
     }
     &__text-no-gifts {
       font-size: 1.5rem;
-      color: white;
+      color: black;
     }
     &__container-gifts {
       margin-top: 0.5rem;

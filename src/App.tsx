@@ -2,23 +2,44 @@ import { StyledMain } from "./style";
 import { useEffect, useState } from "react";
 import { Modal } from "./components/Modal";
 import { Gift as GiftComponent } from "./components/Gift";
+import { ShoppingList } from "./components/ShoppingList";
 
 export type Gift = {
   nombre: string;
   cantidad: number;
   imagen: string;
   destinatario: string;
+  precio: number;
+  id: string;
+};
+
+export type ModalAction = {
+  type: string;
+  gift: Gift | null;
+};
+
+const initialState = {
+  type: "add",
+  gift: null,
 };
 
 function App() {
   const [gifts, setGifts] = useState<Gift[]>(() =>
     JSON.parse(localStorage.getItem("gift") || "[]")
   );
-  const [showMore, setShowMore] = useState(false);
+  const [modalAction, setModalAction] = useState<ModalAction>(initialState);
+  const [showModal, setShowModal] = useState(false);
+  const [showShoppingList, setShowShoppingList] = useState(false);
 
   const showForm = () => {
-    if (showMore) setShowMore(false);
-    else setShowMore(true);
+    if (showModal) {
+      setShowModal(false);
+      setModalAction(initialState);
+    } else setShowModal(true);
+  };
+
+  const openShoppingList = () => {
+    setShowShoppingList(!showShoppingList);
   };
 
   useEffect(() => {
@@ -26,13 +47,41 @@ function App() {
   }, [gifts]);
 
   const deleteGift = (name: string) => {
-    const giftsFilter = gifts.filter((gift) => gift.nombre !== name);
+    const giftsFilter = gifts.filter((gift) => gift.id !== name);
     setGifts(giftsFilter);
   };
 
   const deleteAll = () => {
     setGifts([]);
   };
+
+  const addGift = (gift: Gift) => {
+    setGifts([...gifts, gift]);
+    setShowModal(false);
+    setModalAction(initialState);
+  };
+
+  const editGifts = (gift: Gift) => {
+    const indexGift = gifts.findIndex((g) => gift.id === g.id);
+    const newListGifts = [...gifts];
+    newListGifts[indexGift] = gift;
+    setGifts(newListGifts);
+    setShowModal(false);
+    setModalAction(initialState);
+  };
+
+  const setGiftToEdit = (gift: Gift, type: string) => {
+    setModalAction({
+      type: type,
+      gift: gift,
+    });
+    setShowModal(true);
+  };
+
+  const precioTotal = gifts.reduce(
+    (acc, value) => acc + value.precio * value.cantidad,
+    0
+  );
 
   return (
     <StyledMain>
@@ -42,9 +91,18 @@ function App() {
           Agregar tu regalo
         </button>
 
-        {showMore && (
-          <Modal setGifts={setGifts} gifts={gifts} showForm={showForm} />
+        {showModal && (
+          <Modal
+            gift={modalAction}
+            onSubmit={modalAction.type === "edit" ? editGifts : addGift}
+            onClose={showForm}
+          />
         )}
+
+        {showShoppingList && (
+          <ShoppingList shoppingList={gifts} onClose={openShoppingList} />
+        )}
+
         <ul>
           <div className="main__container-gifts">
             {gifts.length > 0 ? (
@@ -52,7 +110,8 @@ function App() {
                 <GiftComponent
                   deleteGift={deleteGift}
                   gift={gift}
-                  key={gift.nombre}
+                  key={gift.id}
+                  onEdit={setGiftToEdit}
                 />
               ))
             ) : (
@@ -60,9 +119,11 @@ function App() {
             )}
           </div>
         </ul>
+        <p>Precio total: ${precioTotal} </p>
         <button className="main__delete" onClick={deleteAll}>
           Borrar todo!
         </button>
+        <button onClick={openShoppingList}>Previsualizar compra</button>
       </div>
     </StyledMain>
   );

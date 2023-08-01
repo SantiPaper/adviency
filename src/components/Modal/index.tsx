@@ -1,18 +1,30 @@
-import type { Gift } from "../../App";
+import type { Gift, ModalAction } from "../../App";
 import type { FormEvent } from "react";
 import { StyledModal } from "./style";
-import { useEffect, KeyboardEvent, MouseEvent } from "react";
+import { useEffect, KeyboardEvent, MouseEvent, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 type Props = {
-  gifts: Gift[];
-  setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
-  showForm: () => void;
+  onSubmit: (gift: Gift) => void;
+  gift: ModalAction;
+  onClose: () => void;
 };
 
-export const Modal = ({ gifts, setGifts, showForm }: Props) => {
+const randomGifts = [
+  "Pelota",
+  "Remera",
+  "Teclado",
+  "Parlante",
+  "Termo",
+  "Equipo de musica",
+];
+
+export const Modal = ({ onSubmit, onClose, gift }: Props) => {
+  const [randomGift, setRandomGift] = useState(gift.gift?.nombre);
+
   const escapeListener = (e: Event) => {
     if ((e as unknown as KeyboardEvent).key === "Escape") {
-      showForm();
+      onClose();
     }
   };
 
@@ -20,7 +32,7 @@ export const Modal = ({ gifts, setGifts, showForm }: Props) => {
     if (
       (e as unknown as MouseEvent<HTMLDivElement>).target.id === "close-modal"
     ) {
-      showForm();
+      onClose();
     }
   };
 
@@ -42,20 +54,30 @@ export const Modal = ({ gifts, setGifts, showForm }: Props) => {
     const cantidad = formData.get("cantidad")!.toString();
     const imagen = formData.get("imagen")!.toString();
     const destinatario = formData.get("destinatario")!.toString();
+    const precio = formData.get("precio")!.toString();
 
-    const gift: Gift = {
+    const giftOnSubmit: Gift = {
       nombre,
       cantidad: Number(cantidad),
       imagen,
       destinatario,
+      precio: Number(precio),
+      id: gift.type === "edit" ? gift.gift!.id : uuidv4(),
     };
 
-    if (gifts.find((gift) => gift.nombre === nombre) || nombre === "") {
+    const valuesGift = Object.values(giftOnSubmit);
+
+    if (valuesGift.some((v) => !v)) {
       return;
     }
-    setGifts([...gifts, gift]);
+
+    onSubmit(giftOnSubmit);
     form.reset();
-    showForm();
+  };
+
+  const generateRandomGift = () => {
+    const indexRandom = Math.floor(Math.random() * randomGifts.length);
+    setRandomGift(randomGifts[indexRandom]);
   };
 
   return (
@@ -67,11 +89,36 @@ export const Modal = ({ gifts, setGifts, showForm }: Props) => {
               Agrega tu regalo!
             </label>
             <input
+              key={randomGift}
+              defaultValue={randomGift}
               placeholder="Pelota de futbol"
               name="gift"
               type="text"
               id="gift"
               className="form__input"
+              required
+            />
+            <button
+              type="button"
+              aria-label="Generar nombre de regalo aleatorio"
+              onClick={generateRandomGift}
+            >
+              Sorpresa!
+            </button>
+          </div>
+
+          <div className="form__input-container">
+            <label className="form__label" htmlFor="precio">
+              Precio
+            </label>
+            <input
+              defaultValue={gift.gift?.precio}
+              placeholder="100"
+              type="number"
+              id="precio"
+              name="precio"
+              className="form__input"
+              required
             />
           </div>
           <div className="form__input-container">
@@ -79,11 +126,13 @@ export const Modal = ({ gifts, setGifts, showForm }: Props) => {
               Cantidad
             </label>
             <input
+              defaultValue={gift.gift?.cantidad}
               placeholder="2"
               type="number"
               id="cantidad"
               name="cantidad"
               className="form__input"
+              required
             />
           </div>
           <div className="form__input-container">
@@ -91,26 +140,30 @@ export const Modal = ({ gifts, setGifts, showForm }: Props) => {
               Imagen
             </label>
             <input
+              defaultValue={gift.gift?.imagen}
               placeholder="http://pelotadefutbol..."
               type="text"
               id="imagen"
               name="imagen"
               className="form__input"
+              required
             />
             <label className="form__label" htmlFor="destinatario">
               Destinatario
             </label>
             <input
+              defaultValue={gift.gift?.destinatario}
               placeholder="Emi"
               type="text"
               id="destinatario"
               name="destinatario"
               className="form__input"
+              required
             />
           </div>
           <button className="form__button">Agregar</button>
         </form>
-        <button onClick={showForm} className="modal__close">
+        <button onClick={onClose} className="modal__close">
           X
         </button>
       </div>

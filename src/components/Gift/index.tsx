@@ -2,11 +2,12 @@ import type { Gift as GiftType } from "../../App";
 import { StyledGift } from "./style";
 
 type Props = {
-  deleteGift: (name: string) => void;
+  deleteGift: (id: string) => void;
   gift: GiftType;
+  onEdit: (gift: GiftType, type: string) => void;
 };
 
-export const Gift = ({ deleteGift, gift }: Props) => {
+export const Gift = ({ deleteGift, gift, onEdit }: Props) => {
   return (
     <StyledGift>
       <div className="gift__container">
@@ -17,9 +18,11 @@ export const Gift = ({ deleteGift, gift }: Props) => {
           </h3>
           <p>{gift.destinatario}</p>
         </div>
-        <p></p>
+        <p>${gift.precio * gift.cantidad}</p>
       </div>
-      <button className="gift__delete" onClick={() => deleteGift(gift.nombre)}>
+      <button onClick={() => onEdit(gift, "add")}>D</button>
+      <button onClick={() => onEdit(gift, "edit")}>E</button>
+      <button className="gift__delete" onClick={() => deleteGift(gift.id)}>
         X
       </button>
     </StyledGift>
