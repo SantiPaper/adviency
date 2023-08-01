@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "./components/Modal";
 import { Gift as GiftComponent } from "./components/Gift";
 import { ShoppingList } from "./components/ShoppingList";
+import { Audio } from "./components/Audio";
 
 export type Gift = {
   nombre: string;
@@ -86,11 +87,11 @@ function App() {
   return (
     <StyledMain>
       <div className="main__card">
+        <Audio />
         <h1 className="main__title">Adviency</h1>
         <button onClick={showForm} className="main__add-button">
           Agregar tu regalo
         </button>
-
         {showModal && (
           <Modal
             gift={modalAction}
@@ -120,10 +121,14 @@ function App() {
           </div>
         </ul>
         <p>Precio total: ${precioTotal} </p>
-        <button className="main__delete" onClick={deleteAll}>
-          Borrar todo!
-        </button>
-        <button onClick={openShoppingList}>Previsualizar compra</button>
+        <div className="main__container-buttons">
+          <button className="main__delete" onClick={deleteAll}>
+            Borrar todo!
+          </button>
+          <button className="main__preview-button" onClick={openShoppingList}>
+            Previsualizar compra
+          </button>
+        </div>
       </div>
     </StyledMain>
   );
