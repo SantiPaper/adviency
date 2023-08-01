@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledGift = styled.li`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 50rem;
   gap: 2rem;
   font-size: 1.6rem;
   font-weight: 100;
@@ -15,7 +13,8 @@ export const StyledGift = styled.li`
   .gift__container {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    margin-right: auto;
+    gap: 1.5rem;
   }
 
   .gift__info {
@@ -24,7 +23,7 @@ export const StyledGift = styled.li`
     align-items: flex-start;
   }
 
-  .gift__delete {
+  .gift__button {
     background-color: maroon;
     padding: 0.6rem 1rem;
     border: none;

@@ -32,6 +32,7 @@ export const StyledModal = styled.div`
   bottom: 0;
   right: 0;
   animation: ${fadeIn} 500ms forwards;
+  z-index: 1;
 
   .modal {
     background-color: white;

@@ -18,11 +18,15 @@ export const Gift = ({ deleteGift, gift, onEdit }: Props) => {
           </h3>
           <p>{gift.destinatario}</p>
         </div>
-        <p>${gift.precio * gift.cantidad}</p>
       </div>
-      <button onClick={() => onEdit(gift, "add")}>D</button>
-      <button onClick={() => onEdit(gift, "edit")}>E</button>
-      <button className="gift__delete" onClick={() => deleteGift(gift.id)}>
+      <p>${gift.precio * gift.cantidad}</p>
+      <button className="gift__button" onClick={() => onEdit(gift, "add")}>
+        D
+      </button>
+      <button className="gift__button" onClick={() => onEdit(gift, "edit")}>
+        E
+      </button>
+      <button className="gift__button" onClick={() => deleteGift(gift.id)}>
         X
       </button>
     </StyledGift>

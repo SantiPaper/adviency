@@ -11,7 +11,7 @@ export const StyledMain = styled.main`
     &__card {
       text-align: center;
       background-color: white;
-      padding: 4rem 12rem;
+      padding: 4rem 6rem;
     }
     &__title {
       font-size: 6rem;
@@ -36,7 +36,8 @@ export const StyledMain = styled.main`
       cursor: pointer;
       margin-bottom: 2rem;
     }
-    &__delete {
+    &__delete,
+    &__preview-button {
       margin-top: 3rem;
       padding: 1rem 3rem;
       background-color: maroon;
@@ -45,6 +46,7 @@ export const StyledMain = styled.main`
       border-radius: 0.8rem;
       font-size: 2rem;
       cursor: pointer;
+      transition: 0.3s;
     }
     &__text-no-gifts {
       font-size: 1.5rem;
@@ -52,6 +54,19 @@ export const StyledMain = styled.main`
     }
     &__container-gifts {
       margin-top: 0.5rem;
+    }
+    &__container-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__preview-button {
+      margin-top: 1rem;
+      background-color: #e9e9e9;
+      color: black;
+      &:hover {
+        background-color: #d9d9d9;
+      }
     }
   }
 `;
