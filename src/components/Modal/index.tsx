@@ -102,6 +102,7 @@ export const Modal = ({ onSubmit, onClose, gift }: Props) => {
               type="button"
               aria-label="Generar nombre de regalo aleatorio"
               onClick={generateRandomGift}
+              className="random__gift"
             >
               Sorpresa!
             </button>

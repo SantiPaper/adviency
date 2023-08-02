@@ -20,14 +20,24 @@ export const Gift = ({ deleteGift, gift, onEdit }: Props) => {
         </div>
       </div>
       <p>${gift.precio * gift.cantidad}</p>
-      <button className="gift__button" onClick={() => onEdit(gift, "add")}>
-        D
+
+      <button
+        className="gift__button-edit"
+        onClick={() => onEdit(gift, "edit")}
+      >
+        Editar
       </button>
-      <button className="gift__button" onClick={() => onEdit(gift, "edit")}>
-        E
+      <button
+        className="gift__button-delete"
+        onClick={() => deleteGift(gift.id)}
+      >
+        Eliminar
       </button>
-      <button className="gift__button" onClick={() => deleteGift(gift.id)}>
-        X
+      <button
+        className="gift__button-duplicate"
+        onClick={() => onEdit(gift, "add")}
+      >
+        Duplicar
       </button>
     </StyledGift>
   );

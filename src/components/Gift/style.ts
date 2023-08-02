@@ -23,7 +23,9 @@ export const StyledGift = styled.li`
     align-items: flex-start;
   }
 
-  .gift__button {
+  .gift__button-delete,
+  .gift__button-duplicate,
+  .gift__button-edit {
     background-color: maroon;
     padding: 0.6rem 1rem;
     border: none;
@@ -32,7 +34,12 @@ export const StyledGift = styled.li`
     opacity: 0.8;
     cursor: pointer;
   }
-  .gift__delete:hover {
-    opacity: 1;
+  .gift__button-edit {
+    background-color: #48a53c;
+  }
+
+  .gift__button-duplicate {
+    background-color: #d9d9d9;
+    color: black;
   }
 `;

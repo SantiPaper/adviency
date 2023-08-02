@@ -82,4 +82,14 @@ export const StyledModal = styled.div`
     cursor: pointer;
     font-size: 1rem;
   }
+  .random__gift {
+    background-color: #e9e9e9;
+    border: none;
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      background-color: #c9c9c9;
+    }
+  }
 `;

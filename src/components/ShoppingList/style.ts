@@ -58,11 +58,23 @@ export const StyledShoppingList = styled.div`
     padding: 1rem;
     align-items: center;
   }
+
+  .shopping-item p {
+    font-size: 1.5rem;
+  }
+
   .item__name {
     max-width: 13ch;
     width: 10rem;
+    font-size: 1.5rem;
   }
-  .close-modal {
+  .container__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .button-delete,
+  .button-print {
     background-color: maroon;
     border: none;
     padding: 1rem 2rem;
@@ -71,6 +83,9 @@ export const StyledShoppingList = styled.div`
     color: white;
     font-weight: 700;
     cursor: pointer;
+  }
+  .button-print {
+    background-color: #48a53c;
   }
 
   @media print {

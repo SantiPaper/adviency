@@ -87,11 +87,12 @@ function App() {
   return (
     <StyledMain>
       <div className="main__card">
-        <Audio />
         <h1 className="main__title">Adviency</h1>
+
         <button onClick={showForm} className="main__add-button">
           Agregar tu regalo
         </button>
+        <Audio />
         {showModal && (
           <Modal
             gift={modalAction}
@@ -120,15 +121,22 @@ function App() {
             )}
           </div>
         </ul>
-        <p>Precio total: ${precioTotal} </p>
-        <div className="main__container-buttons">
-          <button className="main__delete" onClick={deleteAll}>
-            Borrar todo!
-          </button>
-          <button className="main__preview-button" onClick={openShoppingList}>
-            Previsualizar compra
-          </button>
-        </div>
+        {gifts.length > 0 && (
+          <p className="main__text-price-total">
+            Precio total: ${precioTotal}{" "}
+          </p>
+        )}
+
+        {gifts.length > 0 && (
+          <div className="main__container-buttons">
+            <button className="main__delete" onClick={deleteAll}>
+              Borrar todo!
+            </button>
+            <button className="main__preview-button" onClick={openShoppingList}>
+              Previsualizar compra
+            </button>
+          </div>
+        )}
       </div>
     </StyledMain>
   );

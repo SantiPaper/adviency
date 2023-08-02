@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import audio from "../../assets/audio.mp3";
+import { StyledAudio } from "./style";
 
 export const Audio = () => {
   const [muted, setMuted] = useState(true);
@@ -10,7 +11,7 @@ export const Audio = () => {
   }, []);
 
   return (
-    <>
+    <StyledAudio>
       <audio ref={audioRef} src={audio} autoPlay muted={muted} loop>
         Tu navegador no soporta el audio
       </audio>
@@ -41,6 +42,6 @@ export const Audio = () => {
           )}
         </svg>
       </button>
-    </>
+    </StyledAudio>
   );
 };

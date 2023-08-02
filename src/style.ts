@@ -55,6 +55,9 @@ export const StyledMain = styled.main`
     &__container-gifts {
       margin-top: 0.5rem;
     }
+    .container__audio {
+      position: relative;
+    }
     &__container-buttons {
       display: flex;
       flex-direction: column;
@@ -67,6 +70,12 @@ export const StyledMain = styled.main`
       &:hover {
         background-color: #d9d9d9;
       }
+    }
+    &__text-price-total {
+      font-size: 2rem;
+      border-bottom: 1px solid black;
+      width: fit-content;
+      margin: auto;
     }
   }
 `;

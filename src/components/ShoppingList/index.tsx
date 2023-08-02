@@ -49,10 +49,14 @@ export const ShoppingList = ({ shoppingList, onClose }: Props) => {
               <p>{el.destinatario}</p>
             </li>
           ))}
-          <button className="close-modal" onClick={onClose}>
-            Ocultar
-          </button>
-          <button onClick={onPrint}>Imprimir</button>
+          <div className="container__buttons">
+            <button className="button-delete" onClick={onClose}>
+              Ocultar
+            </button>
+            <button className="button-print" onClick={onPrint}>
+              Imprimir
+            </button>
+          </div>
         </ul>
       </div>
     </StyledShoppingList>
