@@ -118,6 +118,7 @@ export const Modal = ({ onSubmit, onClose, gift }: Props) => {
               name="precio"
               className="form__input"
               required
+              min={1}
             />
           </div>
           <div className="form__input-container">
@@ -132,6 +133,7 @@ export const Modal = ({ onSubmit, onClose, gift }: Props) => {
               name="cantidad"
               className="form__input"
               required
+              min={1}
             />
           </div>
           <div className="form__input-container">

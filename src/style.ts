@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import background from "./assets/background.jpg";
 
+const breakpoints = {
+  mobile: "600px",
+};
+
+export const devices = {
+  mobile: `(min-width: ${breakpoints.mobile})`,
+};
+
 export const StyledMain = styled.main`
   min-height: 100vh;
   display: flex;
@@ -10,7 +18,6 @@ export const StyledMain = styled.main`
   background-image: url(${background});
   background-size: cover;
   background-repeat: no-repeat;
-
   .main {
     &__card {
       text-align: center;
@@ -83,6 +90,26 @@ export const StyledMain = styled.main`
       border-bottom: 1px solid black;
       width: fit-content;
       margin: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .main {
+      &__card {
+        padding: 4rem 4rem;
+      }
+      &__title {
+        font-size: 5rem;
+      }
+      &__container-gifts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+      }
+      &__add-button {
+        margin-bottom: 1rem;
+      }
     }
   }
 `;
