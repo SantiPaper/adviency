@@ -1,7 +1,7 @@
 import type { Gift, ModalAction } from "../../App";
 import type { FormEvent } from "react";
 import { StyledModal } from "./style";
-import { useEffect, KeyboardEvent, MouseEvent, useState } from "react";
+import { useEffect, KeyboardEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type Props = {

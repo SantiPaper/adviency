@@ -1,6 +1,6 @@
 import { Gift } from "../../App";
 import { StyledShoppingList } from "./style";
-import { useEffect, KeyboardEvent, MouseEvent } from "react";
+import { useEffect, KeyboardEvent } from "react";
 
 type Props = {
   shoppingList: Gift[];
