@@ -112,4 +112,9 @@ export const StyledMain = styled.main`
       }
     }
   }
+  @media (max-width: 390px) {
+    .main__title {
+      font-size: 3rem;
+    }
+  }
 `;
