@@ -40,7 +40,7 @@ export const ShoppingList = ({ shoppingList, onClose }: Props) => {
         <h2 className="buy-text">Comprar</h2>
         <ul>
           {shoppingList.map((el) => (
-            <li className="shopping-item">
+            <li className="shopping-item" key={el.id}>
               <img width={40} height={40} src={el.imagen} alt="" />
               <h3 className="item__name">{el.nombre}</h3>
               <p>{el.cantidad}</p>

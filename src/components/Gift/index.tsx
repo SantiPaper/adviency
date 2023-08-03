@@ -24,18 +24,21 @@ export const Gift = ({ deleteGift, gift, onEdit }: Props) => {
       <p>${gift.precio * gift.cantidad}</p>
 
       <button
+        aria-label="Boton editar regalo"
         className="gift__button-edit"
         onClick={() => onEdit(gift, "edit")}
       >
         <AiFillEdit />
       </button>
       <button
+        aria-label="Boton eliminar regalo"
         className="gift__button-delete"
         onClick={() => deleteGift(gift.id)}
       >
         <AiFillDelete />
       </button>
       <button
+        aria-label="Boton duplicar regalo"
         className="gift__button-duplicate"
         onClick={() => onEdit(gift, "add")}
       >
