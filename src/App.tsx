@@ -4,6 +4,7 @@ import { Modal } from "./components/Modal";
 import { Gift as GiftComponent } from "./components/Gift";
 import { ShoppingList } from "./components/ShoppingList";
 import { Audio } from "./components/Audio";
+import { AiFillGift } from "react-icons/ai";
 
 export type Gift = {
   nombre: string;
@@ -87,19 +88,11 @@ function App() {
   return (
     <StyledMain>
       <div className="main__card">
-        <h1 className="main__title">Adviency</h1>
+        <h1 className="main__title">Lista de regalos:</h1>
 
         <button onClick={showForm} className="main__add-button">
-          Agregar tu regalo
+          + <AiFillGift />
         </button>
-        <Audio />
-        {showModal && (
-          <Modal
-            gift={modalAction}
-            onSubmit={modalAction.type === "edit" ? editGifts : addGift}
-            onClose={showForm}
-          />
-        )}
 
         {showShoppingList && (
           <ShoppingList shoppingList={gifts} onClose={openShoppingList} />
@@ -117,7 +110,9 @@ function App() {
                 />
               ))
             ) : (
-              <p className="main__text-no-gifts">No hay regalos! Agrega uno</p>
+              <p className="main__text-no-gifts">
+                Tu lista de regalos esta vacia!
+              </p>
             )}
           </div>
         </ul>
@@ -126,7 +121,14 @@ function App() {
             Precio total: ${precioTotal}{" "}
           </p>
         )}
-
+        <Audio />
+        {showModal && (
+          <Modal
+            gift={modalAction}
+            onSubmit={modalAction.type === "edit" ? editGifts : addGift}
+            onClose={showForm}
+          />
+        )}
         {gifts.length > 0 && (
           <div className="main__container-buttons">
             <button className="main__delete" onClick={deleteAll}>

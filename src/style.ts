@@ -16,9 +16,9 @@ export const StyledMain = styled.main`
       padding: 4rem 6rem;
     }
     &__title {
-      font-size: 6rem;
+      font-size: 7rem;
       margin-bottom: 2rem;
-      font-family: "Poppins", sans-serif;
+      font-family: "Mountains of Christmas", cursive;
     }
     &__gift {
       font-size: 2rem;
@@ -28,7 +28,7 @@ export const StyledMain = styled.main`
       margin-bottom: 1rem;
     }
     &__add-button {
-      padding: 1rem 3rem;
+      padding: 1rem;
       background-color: #48a53c;
       color: #0d3009;
       border: none;
@@ -36,7 +36,6 @@ export const StyledMain = styled.main`
       color: white;
       font-size: 2rem;
       cursor: pointer;
-      margin-bottom: 2rem;
     }
     &__delete,
     &__preview-button {
@@ -53,6 +52,7 @@ export const StyledMain = styled.main`
     &__text-no-gifts {
       font-size: 1.5rem;
       color: black;
+      margin-top: 2rem;
     }
     &__container-gifts {
       margin-top: 0.5rem;

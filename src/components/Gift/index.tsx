@@ -1,5 +1,7 @@
 import type { Gift as GiftType } from "../../App";
 import { StyledGift } from "./style";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { BiSolidDuplicate } from "react-icons/bi";
 
 type Props = {
   deleteGift: (id: string) => void;
@@ -25,19 +27,19 @@ export const Gift = ({ deleteGift, gift, onEdit }: Props) => {
         className="gift__button-edit"
         onClick={() => onEdit(gift, "edit")}
       >
-        Editar
+        <AiFillEdit />
       </button>
       <button
         className="gift__button-delete"
         onClick={() => deleteGift(gift.id)}
       >
-        Eliminar
+        <AiFillDelete />
       </button>
       <button
         className="gift__button-duplicate"
         onClick={() => onEdit(gift, "add")}
       >
-        Duplicar
+        <BiSolidDuplicate />
       </button>
     </StyledGift>
   );
