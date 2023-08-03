@@ -8,12 +8,16 @@ export const StyledMain = styled.main`
   justify-content: center;
   flex-direction: column;
   background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
 
   .main {
     &__card {
       text-align: center;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 4rem 6rem;
+      border-radius: 1rem;
+      border: 2px solid #0d3009;
     }
     &__title {
       font-size: 7rem;
@@ -36,6 +40,7 @@ export const StyledMain = styled.main`
       color: white;
       font-size: 2rem;
       cursor: pointer;
+      border-bottom: 1rem;
     }
     &__delete,
     &__preview-button {
