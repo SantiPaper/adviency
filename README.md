@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+<div align="center">
+ <h1>Challenge Mercado libre
+  
+ <small>Por Emiliano Alfonso</small>
+ </h1>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>Este es un desafío de front-end enviado por Mercado Libre, hecho con React para el front y Express para las rutas del back.</p>
 
-Currently, two official plugins are available:
+<br />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💻 ¿Está deployado?
 
-## Expanding the ESLint configuration
+Por problemas con Vercel (que lo detectaba como una página de phishing), tuve que quitar la versión deployada.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<br />
 
-- Configure the top-level `parserOptions` property like this:
+## 🤔 ¿Cómo iniciar el proyecto localmente?
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+Primero, clonarlo con:
+
+```bash
+git clone https://github.com/Aglowkeys/challenge-meli.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Una vez clonado, abrir el directorio raiz y ejecutar `cd api` para entrar al directorio del back. Crear un archivo .env con la siguiente variable: `PORT = 3001`. Finalmente, ejecutar `npm install` y una vez que termine, `npm run dev` para iniciar el servidor.
+
+Realizar lo mismo para el directorio client: desde la carpeta raiz ejecutar `cd client`, crear un .env y poner la siguiente variable: `REACT_APP_SERVER_URL = http://localhost:3001`. Para iniciar el front, ejecutar primero `npm install` y después `npm start`.
+
+<br />
+
+## 🛒 ¿Cuál era el objetivo de este challenge?
+
+La idea era crear una página sencilla de front en la cual se pudiera buscar un producto, obtener una vista con los resultados y poder cliquear en algún producto para ver más detalles. Además, había que configurar las rutas del servidor para poder hacer las peticiones correspondientes y devolver la información con la estructura que se solicitaba.
+
+<br />

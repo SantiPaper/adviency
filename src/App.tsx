@@ -4,6 +4,7 @@ import { Modal } from "./components/Modal";
 import { Gift as GiftComponent } from "./components/Gift";
 import { ShoppingList } from "./components/ShoppingList";
 import { Audio } from "./components/Audio";
+import background from "./assets/background.jpg";
 
 export type Gift = {
   nombre: string;

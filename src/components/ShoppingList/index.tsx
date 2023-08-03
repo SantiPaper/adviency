@@ -15,9 +15,7 @@ export const ShoppingList = ({ shoppingList, onClose }: Props) => {
   };
 
   const mouseListener = (e: Event) => {
-    if (
-      (e as unknown as MouseEvent<HTMLDivElement>).target.id === "close-modal"
-    ) {
+    if ((e.target as HTMLDivElement).id === "close-modal") {
       onClose();
     }
   };
