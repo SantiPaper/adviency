@@ -25,9 +25,3 @@ git clone https://github.com/SantiPaper/adviency
 Una vez clonado, abrir el directorio raiz ejecutar `npm install` y una vez que termine, `npm run dev`.
 
 <br />
-
-## 🧱 ¿Que tecnologias se usaron?
-
-React - TypeScript y styled-components.
-
-<br />
